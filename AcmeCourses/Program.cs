@@ -27,8 +27,8 @@ internal class Program
         public string CourseName { get; set; } = null!;
         public string Description { get; set; } = null!;
 
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateOnly StartDate { get; set; }
+        public DateOnly EndDate { get; set; }
 
         public int EducationId { get; set; }
         public Education Education { get; set; } = null!;
@@ -70,6 +70,19 @@ internal class Program
             new Education { Id = 1, Name = "Backendutvecklare", Description = "En kombination utav teknik och programmering." },
             new Education { Id = 2, Name = "Frontendutvecklare", Description = "En kombination utav användarvänliga och visuella webbplatser." },
             new Education { Id = 3, Name = "Digital kommunikatör", Description = "För framtidens dynamiska kommunikationslandskap." });
+
+            modelBuilder.Entity<Course>().HasData(
+            new Course { Id = 1, CourseName = "Programmering C#.NET", Description = "Grundkurs C#.", StartDate = DateOnly.Parse("2025-08-25"), EndDate = DateOnly.Parse("2025-10-15") },
+            new Course { Id = 1, CourseName = "SQL", Description = "Databas och Databasdesign", StartDate = DateOnly.Parse("2025-10-20"), EndDate = DateOnly.Parse("2025-10-15") },
+
+            new Course { Id = 2, CourseName = "UX", Description = "Grafisk Design", StartDate = DateOnly.Parse("2026-08-20"), EndDate = DateOnly.Parse("2026-10-15") },
+            new Course { Id = 2, CourseName = "AI/ChatGPT", Description = "AI för programmerare", StartDate = DateOnly.Parse("2026-10-22"), EndDate = DateOnly.Parse("2026-12-11") },
+
+            new Course { Id = 3, CourseName = "Analys och Rapport", Description = "Analysera marknadsdata", StartDate = DateOnly.Parse("2026-10-20"), EndDate = DateOnly.Parse("2026-12-13") },
+            new Course { Id = 3, CourseName = "LIA", Description = "Praktik", StartDate = DateOnly.Parse("2026-12-15"), EndDate = DateOnly.Parse("2027-01-11")});
+
+
+            
         }
     }
 }
