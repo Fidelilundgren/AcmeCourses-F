@@ -16,7 +16,6 @@ internal class Program
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
         // Navigation properties
-        public List<Education> Educations { get; set; } = new();
         public List<Student> Students { get; set; } = new();
         public List<Course> Courses { get; set; } = new();
     }
@@ -31,7 +30,6 @@ internal class Program
         public DateOnly EndDate { get; set; }
 
         public int EducationId { get; set; }
-        public Education Education { get; set; } = null!;
 
     }
 
@@ -41,7 +39,6 @@ internal class Program
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public int EducationId { get; set; }
-        public Education Education { get; set; } = null!;
     }
 
     public class ApplicationContext : DbContext
@@ -50,6 +47,7 @@ internal class Program
         public DbSet<Education> Educations { get; set; } = null!;
         public DbSet<Course> Courses { get; set; } = null!;
         public DbSet<Student> Students { get; set; } = null!;
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var config = new ConfigurationBuilder()
@@ -59,6 +57,7 @@ internal class Program
             var connStr = config.GetConnectionString("DefaultConnection");
             optionsBuilder.UseSqlServer(connStr);
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -67,19 +66,37 @@ internal class Program
 
             // Specificerar data som en specifik tabell ska för-populeras med
             modelBuilder.Entity<Education>().HasData(
-            new Education { Id = 1, Name = "Backendutvecklare", Description = "En kombination utav teknik och programmering." },
-            new Education { Id = 2, Name = "Frontendutvecklare", Description = "En kombination utav användarvänliga och visuella webbplatser." },
-            new Education { Id = 3, Name = "Digital kommunikatör", Description = "För framtidens dynamiska kommunikationslandskap." });
+            new Education { Id = 1, Name = "Backendutvecklare", 
+                Description = "En kombination utav teknik och programmering." },
+            new Education { Id = 2, Name = "Frontendutvecklare", 
+                Description = "En kombination utav användarvänliga och visuella webbplatser." },
+            new Education { Id = 3, Name = "Digital kommunikatör", 
+                Description = "För framtidens dynamiska kommunikationslandskap." });
 
             modelBuilder.Entity<Course>().HasData(
-            new Course { Id = 1, CourseName = "Programmering C#.NET", Description = "Grundkurs C#.", StartDate = DateOnly.Parse("2025-08-25"), EndDate = DateOnly.Parse("2025-10-15") },
-            new Course { Id = 1, CourseName = "SQL", Description = "Databas och Databasdesign", StartDate = DateOnly.Parse("2025-10-20"), EndDate = DateOnly.Parse("2025-10-15") },
+            new Course { Id = 1, CourseName = "Programmering C#.NET", 
+                Description = "Grundkurs C#.", StartDate = DateOnly.Parse("2025-08-25"), 
+                EndDate = DateOnly.Parse("2025-10-15") },
+            new Course { Id = 1, CourseName = "SQL", 
+                Description = "Databas och Databasdesign", 
+                StartDate = DateOnly.Parse("2025-10-20"), 
+                EndDate = DateOnly.Parse("2025-10-15") },
 
-            new Course { Id = 2, CourseName = "UX", Description = "Grafisk Design", StartDate = DateOnly.Parse("2026-08-20"), EndDate = DateOnly.Parse("2026-10-15") },
-            new Course { Id = 2, CourseName = "AI/ChatGPT", Description = "AI för programmerare", StartDate = DateOnly.Parse("2026-10-22"), EndDate = DateOnly.Parse("2026-12-11") },
+            new Course { Id = 2, CourseName = "UX", 
+                Description = "Grafisk Design", StartDate = DateOnly.Parse("2026-08-20"), 
+                EndDate = DateOnly.Parse("2026-10-15") },
+            new Course { Id = 2, CourseName = "AI/ChatGPT", 
+                Description = "AI för programmerare", 
+                StartDate = DateOnly.Parse("2026-10-22"), 
+                EndDate = DateOnly.Parse("2026-12-11") },
 
-            new Course { Id = 3, CourseName = "Analys och Rapport", Description = "Analysera marknadsdata", StartDate = DateOnly.Parse("2026-10-20"), EndDate = DateOnly.Parse("2026-12-13") },
-            new Course { Id = 3, CourseName = "LIA", Description = "Praktik", StartDate = DateOnly.Parse("2026-12-15"), EndDate = DateOnly.Parse("2027-01-11")});
+            new Course { Id = 3, CourseName = "Analys och Rapport", 
+                Description = "Analysera marknadsdata", 
+                StartDate = DateOnly.Parse("2026-10-20"), 
+                EndDate = DateOnly.Parse("2026-12-13") },
+            new Course { Id = 3, CourseName = "LIA", 
+                Description = "Praktik", StartDate = DateOnly.Parse("2026-12-15"), 
+                EndDate = DateOnly.Parse("2027-01-11")});
 
             modelBuilder.Entity<Student>().HasData(
             new Student { Id = 1, FirstName = "Fideli", LastName = "Lundgren", EducationId = 1 },
