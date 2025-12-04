@@ -18,7 +18,7 @@ internal class Program
         // Navigation properties
         public List<Education> Educations { get; set; } = new();
         public List<Student> Students { get; set; } = new();
-        public List<Course> Courses { get; set; } = null!;
+        public List<Course> Courses { get; set; } = new();
     }
 
     public class Course
