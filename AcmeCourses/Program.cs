@@ -76,27 +76,27 @@ internal class Program
             modelBuilder.Entity<Course>().HasData(
             new Course { Id = 1, CourseName = "Programmering C#.NET", 
                 Description = "Grundkurs C#.", StartDate = DateOnly.Parse("2025-08-25"), 
-                EndDate = DateOnly.Parse("2025-10-15") },
-            new Course { Id = 1, CourseName = "SQL", 
+                EndDate = DateOnly.Parse("2025-10-15"), EducationId = 1 },
+            new Course { Id = 2, CourseName = "SQL", 
                 Description = "Databas och Databasdesign", 
                 StartDate = DateOnly.Parse("2025-10-20"), 
-                EndDate = DateOnly.Parse("2025-10-15") },
+                EndDate = DateOnly.Parse("2025-10-15"), EducationId = 1 },
 
-            new Course { Id = 2, CourseName = "UX", 
+            new Course { Id = 3, CourseName = "UX", 
                 Description = "Grafisk Design", StartDate = DateOnly.Parse("2026-08-20"), 
-                EndDate = DateOnly.Parse("2026-10-15") },
-            new Course { Id = 2, CourseName = "AI/ChatGPT", 
+                EndDate = DateOnly.Parse("2026-10-15"), EducationId = 2 },
+            new Course { Id = 4, CourseName = "AI/ChatGPT", 
                 Description = "AI för programmerare", 
                 StartDate = DateOnly.Parse("2026-10-22"), 
-                EndDate = DateOnly.Parse("2026-12-11") },
+                EndDate = DateOnly.Parse("2026-12-11"), EducationId = 2 },
 
-            new Course { Id = 3, CourseName = "Analys och Rapport", 
+            new Course { Id = 5, CourseName = "Analys och Rapport", 
                 Description = "Analysera marknadsdata", 
                 StartDate = DateOnly.Parse("2026-10-20"), 
-                EndDate = DateOnly.Parse("2026-12-13") },
-            new Course { Id = 3, CourseName = "LIA", 
+                EndDate = DateOnly.Parse("2026-12-13"), EducationId = 3 },
+            new Course { Id = 6, CourseName = "LIA", 
                 Description = "Praktik", StartDate = DateOnly.Parse("2026-12-15"), 
-                EndDate = DateOnly.Parse("2027-01-11")});
+                EndDate = DateOnly.Parse("2027-01-11"), EducationId = 3});
 
             modelBuilder.Entity<Student>().HasData(
             new Student { Id = 1, FirstName = "Fideli", LastName = "Lundgren", EducationId = 1 },
