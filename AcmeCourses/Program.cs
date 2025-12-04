@@ -1,4 +1,8 @@
-﻿namespace AcmeCourses;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.Data;
+
+namespace AcmeCourses;
 
 internal class Program
 {
@@ -38,5 +42,34 @@ internal class Program
         public string LastName { get; set; } = null!;
         public int EducationId { get; set; }
         public Education Education { get; set; } = null!;
+    }
+
+    public class ApplicationContext : DbContext
+    {
+        // Exponerar våra entiteter som DbSet
+        public DbSet<Education> Educations { get; set; } = null!;
+        public DbSet<Course> Courses { get; set; } = null!;
+        public DbSet<Student> Students { get; set; } = null!;
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            var config = new ConfigurationBuilder()
+            .AddJsonFile("AppSettings.json")
+            .Build();
+            // Läs vår connection-string från konfigurations-filen
+            var connStr = config.GetConnectionString("DefaultConnection");
+            optionsBuilder.UseSqlServer(connStr);
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            // Specificerar vilken collation databasen ska använda
+            modelBuilder.UseCollation("Finnish_Swedish_CI_AS");
+
+            // Specificerar data som en specifik tabell ska för-populeras med
+            modelBuilder.Entity<Education>().HasData(
+            new Education { Id = 1, Name = "Backendutvecklare", Description = "En kombination utav teknik och programmering." },
+            new Education { Id = 2, Name = "Frontendutvecklare", Description = "En kombination utav användarvänliga och visuella webbplatser." },
+            new Education { Id = 3, Name = "Digital kommunikatör", Description = "För framtidens dynamiska kommunikationslandskap." });
+        }
     }
 }
