@@ -8,6 +8,9 @@ internal class Program
 {
     static void Main(string[] args)
     {
+
+        var context = new ApplicationContext();
+
         while (true)
         {
             Console.WriteLine("=========================");
@@ -27,23 +30,55 @@ internal class Program
                 case 'e':
                     Console.Clear();
                     Console.WriteLine("Education:");
+
+                    var educations = context.Educations
+                        .ToList();
+
+                    foreach (var eduation in educations)
+                    {
+                        Console.WriteLine($" ID: {eduation.Id}, Namn: {eduation.Name}, Beskrivning: {eduation.Description}");
+                    }
+
                     break;
 
                 case 'c':
                     Console.Clear();
-                    Console.WriteLine("Coure:");
+                    Console.WriteLine("Course:");
+
+                    var courses = context.Courses
+                        .ToList();
+
+                    foreach (var course in courses )
+                    {
+                        Console.WriteLine($" ID: {course.Id}, Namn: {course.CourseName}, Beskrivning: {course.Description}, Start: {course.StartDate}, Slut: {course.EndDate} ");
+                    }
                     break; 
 
                 case 's':
+                    Console.Clear();
                     Console.WriteLine("Student:");
+
+                    var students = context.Students
+                       .ToList();
+
+                    foreach (var student in students)
+                    {
+                        Console.WriteLine($" ID: {student.Id}, Förnamn: {student.FirstName}, Efternamn: {student.LastName}");
+                    }
+
+
+
+
                     break;
 
                 case 'l':
                     Console.Clear();
                     Console.WriteLine("Goodbye!");
+                    Environment.Exit(0);
                     break;
 
                 default: // Invalid input
+                    Console.Clear();
                     Console.WriteLine("Please enter E/C/S/L!");
                     break;
             }
@@ -57,6 +92,13 @@ internal class Program
         // Navigation properties
         public List<Student> Students { get; set; } = new();
         public List<Course> Courses { get; set; } = new();
+
+        //public override string ToString()
+        //{
+        //    return "";
+            
+        //}
+
     }
 
     public class Course
