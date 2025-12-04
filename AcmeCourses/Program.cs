@@ -81,8 +81,14 @@ internal class Program
             new Course { Id = 3, CourseName = "Analys och Rapport", Description = "Analysera marknadsdata", StartDate = DateOnly.Parse("2026-10-20"), EndDate = DateOnly.Parse("2026-12-13") },
             new Course { Id = 3, CourseName = "LIA", Description = "Praktik", StartDate = DateOnly.Parse("2026-12-15"), EndDate = DateOnly.Parse("2027-01-11")});
 
-
+            modelBuilder.Entity<Student>().HasData(
+            new Student { Id = 1, FirstName = "Fideli", LastName = "Lundgren", EducationId = 1 },
+            new Student { Id = 2, FirstName = "Niklas", LastName = "Kääpä", EducationId = 2 },
+            new Student { Id = 3, FirstName = "Joakim", LastName = "Christiansson", EducationId = 3 },
+            new Student { Id = 4, FirstName = "Ruhollah", LastName = "Karim", EducationId = 2 });
             
+           
+
         }
     }
 }
