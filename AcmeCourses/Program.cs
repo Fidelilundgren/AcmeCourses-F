@@ -8,7 +8,46 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        while (true)
+        {
+            Console.WriteLine("=========================");
+            Console.WriteLine("          MENU           ");
+            Console.WriteLine("=========================");
+            Console.WriteLine("E: Education ");
+            Console.WriteLine("C: Course");
+            Console.WriteLine("S: Student");
+            Console.WriteLine("L: Leave");
+            Console.WriteLine("Choose an option (E/C/S/L) ");
+            char input = char.ToLower(Console.ReadKey(true).KeyChar);
+
+            Console.WriteLine(char.ToUpper(input)); // Display the key in uppercase
+
+            switch (input)
+            {
+                case 'e':
+                    Console.Clear();
+                    Console.WriteLine("Education:");
+                    break;
+
+                case 'c':
+                    Console.Clear();
+                    Console.WriteLine("Coure:");
+                    break; 
+
+                case 's':
+                    Console.WriteLine("Student:");
+                    break;
+
+                case 'l':
+                    Console.Clear();
+                    Console.WriteLine("Goodbye!");
+                    break;
+
+                default: // Invalid input
+                    Console.WriteLine("Please enter E/C/S/L!");
+                    break;
+            }
+        }
     }
     public class Education
     {
