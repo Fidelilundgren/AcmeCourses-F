@@ -112,6 +112,8 @@ internal class Program
 
         public int EducationId { get; set; }
 
+        public Education Education { get; set; }
+
     }
 
     public class Student
@@ -120,6 +122,7 @@ internal class Program
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public int EducationId { get; set; }
+        public Education Education { get; set; }
     }
 
     public class ApplicationContext : DbContext

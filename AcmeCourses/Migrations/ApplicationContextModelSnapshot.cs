@@ -52,7 +52,7 @@ namespace AcmeCourses.Migrations
 
                     b.HasIndex("EducationId");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
 
                     b.HasData(
                         new
@@ -129,7 +129,7 @@ namespace AcmeCourses.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Educations");
+                    b.ToTable("Educations", (string)null);
 
                     b.HasData(
                         new
@@ -175,7 +175,7 @@ namespace AcmeCourses.Migrations
 
                     b.HasIndex("EducationId");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
 
                     b.HasData(
                         new
