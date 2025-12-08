@@ -13,7 +13,7 @@ internal partial class Program
 
         public int EducationId { get; set; }
 
-        public Education Education { get; set; }
+        public Education Education { get; set; } = null!;
 
     }
 }

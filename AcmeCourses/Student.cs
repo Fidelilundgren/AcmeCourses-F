@@ -8,6 +8,6 @@ internal partial class Program
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public int EducationId { get; set; }
-        public Education Education { get; set; }
+        public Education Education { get; set; } = null!;
     }
 }
